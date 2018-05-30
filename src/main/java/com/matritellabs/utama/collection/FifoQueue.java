@@ -1,14 +1,26 @@
 package com.matritellabs.utama.collection;
 
+import java.util.LinkedList;
+
 public class FifoQueue implements Queue {
+
+    public static LinkedList<Object> ourList = new LinkedList();
+
     @Override
     public boolean add(Object e) {
-        return false;
+        ourList.add(e);
+        if (ourList.contains(e)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public Object element() {
-        return null;
+        Object o;
+        o = ourList.get(0);
+        return o;
     }
 
     @Override
@@ -18,12 +30,22 @@ public class FifoQueue implements Queue {
 
     @Override
     public Object peek() {
-        return null;
+        Object o = new Object();
+        if (ourList.isEmpty()) {
+            return null;
+        } else {
+            return ourList.contains(o);
+        }
     }
 
     @Override
     public Object poll() {
-        return null;
+        Object o = new Object();
+        if (ourList.isEmpty()) {
+            return null;
+        } else {
+            return ourList.(o);
+        }
     }
 
     @Override
