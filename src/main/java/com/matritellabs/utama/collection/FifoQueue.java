@@ -1,6 +1,7 @@
 package com.matritellabs.utama.collection;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 public class FifoQueue implements Queue {
 
@@ -18,14 +19,22 @@ public class FifoQueue implements Queue {
 
     @Override
     public Object element() {
-        Object o;
-        o = ourList.get(0);
-        return o;
+        Object o = new Object();
+        if (ourList.contains(o)) {
+            return ourList.element();
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
     @Override
     public boolean offer(Object e) {
-        return false;
+        ourList.add(e);
+        if (ourList.contains(e)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -44,12 +53,19 @@ public class FifoQueue implements Queue {
         if (ourList.isEmpty()) {
             return null;
         } else {
-            return ourList.(o);
+            return ourList.remove(o);
         }
     }
 
     @Override
     public Object remove() {
-        return null;
+        Object o = new Object();
+        if (ourList.contains(o)) {
+            ourList.remove(o);
+            return o;
+        } else {
+            throw new NoSuchElementException();
+        }
+
     }
 }
